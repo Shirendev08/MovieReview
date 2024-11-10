@@ -6,6 +6,8 @@ import Image from 'next/image';
 interface Movie {
     title: string; // Add other properties based on the movie data structure
     poster_path: string,
+    popularity: string,
+    release_date: string
 }
 
 const Movies = () => {
@@ -31,21 +33,17 @@ const Movies = () => {
         {movies1.map((movie, index) => (
             <div key={index}>
                 <Image
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                width={200}
-                height={100}
-                alt={movie.title!}
-              />
-              <li>{movie.poster_path} </li>
+  src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://links.papareact.com/o8z'}
+  width={200}
+  height={100}
+  alt={movie.title}
+/>
                 <li>{movie.title}</li> 
+                <li>{movie.popularity}</li>
+                <li>{movie.release_date}</li>
             </div>
         ))}
-         <Image
-                src='https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg'
-                width={200}
-                height={100}
-                alt=""
-              />
+        
       </ul>
     </div>
   );

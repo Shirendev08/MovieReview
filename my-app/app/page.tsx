@@ -1,8 +1,21 @@
-import Movies from "@/components/Movies";
-export default function Home() {
+// import CarouselBannerWrapper from "@/components/CarouselBannerWrapper";
+// import MoviesCarousel from "@/components/MoviesCarousel";
+// import {movies} from "@/lib/server";
+import MyCarousel from "@/components/MyCarousel";
+
+export default async function Home() {
+  // const upcomingMovies = await movies();
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-       <Movies/>
-    </div>
+    <main className="">
+      {/* <CarouselBannerWrapper /> */}
+      {/* <div className="flex flex-col space-y-2">
+        <MoviesCarousel movies={upcomingMovies} title="Upcoming" />
+        <MoviesCarousel movies={topRatedMovies} title="Top Rated" />
+        <MoviesCarousel movies={popularMovies} title="Popular" />
+        
+      </div> */}
+      <MyCarousel/>
+    </main>
   );
 }

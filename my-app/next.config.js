@@ -5,10 +5,15 @@ module.exports = {
           protocol: 'https',
           hostname: 'image.tmdb.org',
           port: '',
+          
         },
+        {
+            protocol: 'https',
+            hostname: 'links.papareact.com',
+            port: '',
+          },
       ],
     },
   }
-
 
   

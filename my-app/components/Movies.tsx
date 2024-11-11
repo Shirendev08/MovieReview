@@ -35,7 +35,8 @@ const Movies = () => {
                 <Image
   src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://links.papareact.com/o8z'}
   width={200}
-  height={100}
+  height={300}
+  layout='responsive'
   alt={movie.title}
 />
                 <li>{movie.title}</li> 

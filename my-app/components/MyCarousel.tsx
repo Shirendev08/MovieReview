@@ -5,11 +5,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import { movies } from '@/lib/server';
 import getImagePath from '@/lib/getImagePath';
-const images = [
-  "https://image.tmdb.org/t/p/original/j0xO6355h5HfvC425sWDT6tiBZM.jpg",
-  "https://image.tmdb.org/t/p/original/pbrkL804c8yAv3zBZR4QPEafpAR.jpg",
-  "https://image.tmdb.org/t/p/original//8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg",
-];
+
 
 interface Movie {
     title: string; // Add other properties based on the movie data structure
@@ -43,10 +39,10 @@ const MyCarousel: React.FC = () => {
   }, [emblaApi]);
 
   return (
-    <div className="relative w-full overflow-hidden" ref={emblaRef}>
+    <div className=" overflow-hidden " ref={emblaRef}>
       <div className="flex">
         {movies1.map((movie,index) => (
-          <div className="relative min-w-full" key={index}>
+          <div className="relative min-w-full h-2/6" key={index}>
             <Image
              
               src={getImagePath(movie.backdrop_path, true)}

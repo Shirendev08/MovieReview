@@ -1,19 +1,19 @@
-"use client"
+"use client";
 import React, { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { movies } from '@/lib/server';
 import getImagePath from '@/lib/getImagePath';
 
-
 interface Movie {
-    title: string; // Add other properties based on the movie data structure
-    poster_path: string,
-    popularity: string,
-    release_date: string,
-    backdrop_path: string
+  title: string;
+  poster_path: string;
+  popularity: string;
+  release_date: string;
+  backdrop_path: string;
 }
+
 const MyCarousel: React.FC = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 2000 })]);
   const [movies1, setMovies1] = useState<Movie[]>([]);
@@ -28,8 +28,9 @@ const MyCarousel: React.FC = () => {
       }
     };
 
-    fetchMovies(); // Call the async function to fetch the movies
+    fetchMovies();
   }, []);
+
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
   }, [emblaApi]);
@@ -39,22 +40,26 @@ const MyCarousel: React.FC = () => {
   }, [emblaApi]);
 
   return (
-    <div className=" overflow-hidden " ref={emblaRef}>
+    <div className="relative overflow-hidden" ref={emblaRef}>
       <div className="flex">
-        {movies1.map((movie,index) => (
-          <div className="relative min-w-full h-2/6" key={index}>
+        {movies1.map((movie, index) => (
+          <div className="relative min-w-[55%] l-10 h-[500px] ml-10 mr-10" key={index}>
             <Image
-             
               src={getImagePath(movie.backdrop_path, true)}
-              alt=""
+              alt={movie.title}
               width={1920}
               height={1080}
+              objectFit="cover"
+              placeholder="blur"
+              blurDataURL="/placeholder-image.jpg" // Add a blur placeholder image
+              priority={index === 0} // Prioritize loading of the first image
             />
+            <p>{movie.title}</p>
           </div>
         ))}
       </div>
-      
-      {/* Controls */}
+
+      {/* Carousel Controls */}
       <button
         className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10"
         onClick={scrollPrev}

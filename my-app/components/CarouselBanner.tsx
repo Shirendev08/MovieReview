@@ -3,7 +3,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Movie } from "@/typings";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import getImagePath from "@/lib/getImagePath";
 
 Autoplay.globalOptions = { delay: 8000 };

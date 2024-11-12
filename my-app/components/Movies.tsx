@@ -1,13 +1,14 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { movies } from '@/lib/server'; // Assuming 'movies' is the function to fetch data from Django
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 interface Movie {
     title: string; // Add other properties based on the movie data structure
     poster_path: string,
     popularity: string,
-    release_date: string
+    release_date: string,
+    original_title:string
 }
 
 const Movies = () => {
@@ -28,18 +29,17 @@ const Movies = () => {
 
   return (
     <div>
-      <h1>Movies</h1>
-      <ul>
+      <h1 className='mt-10'>Mongolian Movies</h1>
+      <ul className='flex'>
         {movies1.map((movie, index) => (
-            <div key={index}>
+            <div key={index} className='mr-10 w-auto'>
                 <Image
   src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://links.papareact.com/o8z'}
   width={200}
   height={300}
-  layout='responsive'
   alt={movie.title}
 />
-                <li>{movie.title}</li> 
+                <li>{movie.original_title}</li> 
                 <li>{movie.popularity}</li>
                 <li>{movie.release_date}</li>
             </div>
